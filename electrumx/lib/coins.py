@@ -219,33 +219,33 @@ class Coin:
         return Decimal(value) / cls.VALUE_PER_COIN
 
 
-class Ravencoin(Coin):
-    NAME = "Ravencoin"
-    SHORTNAME = "RVN"
+class DogeGPU(Coin):
+    NAME = "DogeGPU"
+    SHORTNAME = "DOGPU"
     NET = "mainnet"
     XPUB_VERBYTES = bytes.fromhex("0488B21E")
     XPRV_VERBYTES = bytes.fromhex("0488ADE4")
-    P2PKH_VERBYTE = bytes.fromhex("3C")
-    P2SH_VERBYTES = [bytes.fromhex("7A")]
-    GENESIS_HASH = ('0000006b444bc2f2ffe627be9d9e7e7a'
-                    '0730000870ef6eb6da46c8eae389df90')
+    P2PKH_VERBYTE = bytes.fromhex("26")
+    P2SH_VERBYTES = [bytes.fromhex("62")]
+    GENESIS_HASH = ('00000052129a4a8d7f095769951e24a0'
+                    'b6f82a68670324985d7733ec4686d3b4')
     DEFAULT_MAX_SEND = 10_000_000
-    X16RV2_ACTIVATION_TIME = 1569945600   # algo switch to x16rv2 at this timestamp
-    KAWPOW_ACTIVATION_TIME = 1588788000  # kawpow algo activation time
-    KAWPOW_ACTIVATION_HEIGHT = 1219736
+    X16RV2_ACTIVATION_TIME = 0   # algo switch to x16rv2 at this timestamp
+    KAWPOW_ACTIVATION_TIME = 1711951300  # kawpow algo activation time
+    KAWPOW_ACTIVATION_HEIGHT = 1
     KAWPOW_HEADER_SIZE = 120
     
-    CHAIN_SIZE = 29_655_304_862
-    CHAIN_SIZE_HEIGHT = 2_873_312
-    AVG_BLOCK_SIZE = 12_681
+    CHAIN_SIZE = 567_612_444
+    CHAIN_SIZE_HEIGHT = 1_217_151
+    AVG_BLOCK_SIZE = 10_000
     
-    RPC_PORT = 8766
+    RPC_PORT = 6068
     REORG_LIMIT = 60
     PEERS = [
-        'rvn4lyfe.com t s',
-        '162.19.153.65 t s',
-        'electrum-rvn.moontree.com s',
-        'aq7vuqykup2voklcrpqljf6jnjkzrouowsjfrmybdou5kdhrpr6sjjid.onion t s',
+        '65.130.238.153 t s',
+        '35.212.230.180 t s',
+        '50.116.30.53 t s',
+        '35.212.158.140 t s',
     ]
 
     @classmethod
@@ -253,7 +253,7 @@ class Ravencoin(Coin):
         '''Given a header height return its offset in the headers file.'''
         if cls.KAWPOW_ACTIVATION_HEIGHT < 0 or height < cls.KAWPOW_ACTIVATION_HEIGHT:
             return height * cls.BASIC_HEADER_SIZE
-        else:  # RVN block header size increased with kawpow fork
+        else:  # DOGPU block header size increased with kawpow fork
             return (cls.KAWPOW_ACTIVATION_HEIGHT * cls.BASIC_HEADER_SIZE) + ((height - cls.KAWPOW_ACTIVATION_HEIGHT) * cls.KAWPOW_HEADER_SIZE)
 
     @classmethod
@@ -270,7 +270,7 @@ class Ravencoin(Coin):
         else:
             return x16r_hash.getPoWHash(header)
 
-class RavencoinTestnet(Ravencoin):
+class DogeGPUTestnet(DogeGPU):
     NET = "testnet"
     XPUB_VERBYTES = bytes.fromhex("043587CF")
     XPRV_VERBYTES = bytes.fromhex("04358394")
@@ -289,5 +289,5 @@ class RavencoinTestnet(Ravencoin):
 
     RPC_PORT = 18766
     PEERS = [
-        "rvn4lyfe.com t50011 s50012",
+        "dogpu4lyfe.com t50011 s50012",
     ]

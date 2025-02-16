@@ -172,8 +172,8 @@ class OpCodes(IntEnum):
 
     OP_INVALIDOPCODE = 0xff
 
-    # Ravencoin
-    OP_RVN_ASSET = 0xc0
+    # DogeGPU
+    OP_DOGPU_ASSET = 0xc0
 
     def hex(self) -> str:
         return bytes([self]).hex()
