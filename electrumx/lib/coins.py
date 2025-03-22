@@ -244,7 +244,6 @@ class DogeGPU(Coin):
     PEERS = [
         '35.212.136.126 t s',
         '35.206.195.22 t s',
-        '35.223.128.80 t s',
         'electrum.dogegpu.org t s',
         'electrumx.dogegpu.org t s',
     ]
