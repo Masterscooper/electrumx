@@ -242,10 +242,11 @@ class DogeGPU(Coin):
     RPC_PORT = 6068
     REORG_LIMIT = 60
     PEERS = [
-        '65.130.238.153 t s',
-        '35.212.230.180 t s',
-        '50.116.30.53 t s',
-        '35.212.158.140 t s',
+        '35.212.136.126 t s',
+        '35.206.195.22 t s',
+        '35.223.128.80 t s',
+        'electrum.dogegpu.org t s',
+        'electrumx.dogegpu.org t s',
     ]
 
     @classmethod
